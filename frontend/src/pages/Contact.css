@@ -1,0 +1,227 @@
+/* Contact.css — Responsive Dark Blue & White Theme
+   Assumes color variables exist in :root of App.css:
+   --primary-color, --primary-dark, --secondary-color, --border-color, --text-dark, --text-light, --shadow-sm, --shadow-md
+*/
+
+.contact {
+  min-height: 100vh;
+  background: #ffffff;
+  color: var(--text-dark);
+  padding-bottom: 60px;
+}
+
+/* Containers */
+.contact-methods,
+.contact-form-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 20px;
+}
+
+/* Methods grid */
+.methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Card */
+.method-card {
+  text-align: center;
+  padding: 28px;
+  background: linear-gradient(180deg, #fbfeff 0%, #ffffff 100%);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.32s var(--transition), box-shadow 0.32s var(--transition);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+
+.method-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.method-icon {
+  font-size: clamp(28px, 4.2vw, 48px);
+  color: var(--primary-color);
+  margin-bottom: 6px;
+}
+
+.method-card h3 {
+  font-size: clamp(16px, 2.2vw, 20px);
+  color: var(--text-dark);
+  margin: 0;
+  font-weight: 700;
+}
+
+.method-value {
+  font-size: clamp(16px, 2.4vw, 18px);
+  font-weight: 800;
+  margin-bottom: 6px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.method-desc {
+  color: var(--text-light);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ---------- Contact Form ---------- */
+
+.form-wrapper {
+  max-width: 920px;
+  margin: 24px auto 0;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.form-header h2 {
+  font-size: clamp(20px, 3.2vw, 28px);
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+/* two-column layout on wider screens */
+.contact-form {
+  background: white;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* single-column under 920px */
+@media (max-width: 920px) {
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-left,
+.form-right {
+  display: grid;
+  gap: 12px;
+}
+
+.form-right {
+  align-self: start;
+}
+
+/* inputs */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  font-size: 15px;
+  transition: border-color 0.18s var(--transition), box-shadow 0.18s var(--transition);
+  background: #fff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 22px rgba(0, 102, 204, 0.12);
+}
+
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* submit */
+.submit-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.18s var(--transition), box-shadow 0.18s var(--transition);
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Right column helper card */
+.contact-info-card {
+  background: linear-gradient(180deg, #fbfeff, #ffffff);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* make right column sticky on wide screens */
+@media (min-width: 1280px) {
+  .form-right {
+    position: sticky;
+    top: 96px;
+  }
+}
+
+/* small devices */
+@media (max-width: 480px) {
+  .contact-methods,
+  .contact-form-section {
+    padding: 28px 16px;
+  }
+
+  .method-card {
+    padding: 18px;
+  }
+
+  .form-header h2 {
+    font-size: 20px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+  }
+}
+
+/* messages */
+.success-message {
+  background: linear-gradient(90deg, #10b981, #059669);
+  color: white;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.error-message {
+  background: rgba(220, 38, 38, 0.08);
+  color: #b91c1c;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+}

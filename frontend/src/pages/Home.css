@@ -1,0 +1,339 @@
+.home {
+  min-height: 100vh;
+  background: white;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.hero-section p {
+  font-size: 20px;
+  opacity: 0.95;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Stats Section */
+.stats-section {
+  background: white;
+  padding: 80px 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.stats-section h2 {
+  text-align: center;
+  font-size: 44px;
+  font-weight: 800;
+  margin-bottom: 60px;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.08);
+  border: 1px solid #dbeafe;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 16px 32px rgba(30, 58, 138, 0.15);
+  transform: translateY(-8px);
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+}
+
+.stat-card h3 {
+  font-size: 54px;
+  margin-bottom: 12px;
+  font-weight: 800;
+  color: #1e3a8a;
+  letter-spacing: -1px;
+}
+
+.stat-card p {
+  font-size: 16px;
+  color: #475569;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Services Preview */
+.services-preview {
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  padding: 80px 20px;
+}
+
+.services-preview > h2 {
+  text-align: center;
+  font-size: 44px;
+  font-weight: 800;
+  margin-bottom: 60px;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.service-card {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.service-card:hover {
+  background: white;
+  box-shadow: 0 16px 32px rgba(30, 58, 138, 0.12);
+  transform: translateY(-10px);
+  border-color: #bfdbfe;
+}
+
+.service-card h3 {
+  font-size: 24px;
+  margin: 20px 0;
+  color: #0f172a;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.service-card p {
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+.read-more {
+  color: #1e3a8a;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.read-more:hover {
+  color: #3b82f6;
+  transform: translateX(5px);
+}
+
+.section-cta {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.btn-lg {
+  padding: 15px 40px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Features Section */
+.features-section {
+  background: white;
+  padding: 80px 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.features-section > h2 {
+  text-align: center;
+  font-size: 44px;
+  font-weight: 800;
+  margin-bottom: 60px;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.feature-item {
+  padding: 40px;
+  background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+  border-radius: 12px;
+  position: relative;
+  padding-left: 110px;
+  transition: all 0.3s ease;
+  border: 1px solid #dbeafe;
+  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.06);
+}
+
+.feature-item:hover {
+  background: white;
+  box-shadow: 0 12px 30px rgba(30, 58, 138, 0.12);
+  transform: translateX(8px);
+  border-color: #bfdbfe;
+}
+
+.feature-number {
+  position: absolute;
+  left: 30px;
+  top: 40px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #1e3a8a, #0f172a);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 800;
+  box-shadow: 0 8px 16px rgba(30, 58, 138, 0.3);
+}
+
+.feature-item h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #0f172a;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.feature-item p {
+  color: #64748b;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  color: white;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.cta-content h2 {
+  font-size: 54px;
+  margin-bottom: 25px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.cta-content p {
+  font-size: 18px;
+  margin-bottom: 50px;
+  opacity: 0.95;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+  font-weight: 500;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+  padding: 16px 45px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+  border: 2px solid white;
+  background: white;
+  color: #1e3a8a;
+}
+
+.cta-buttons .btn:hover {
+  background: transparent;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+
+  .hero-section p {
+    font-size: 16px;
+  }
+
+  .stats-section h2,
+  .services-preview > h2,
+  .features-section > h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .stats-grid {
+    gap: 30px;
+  }
+
+  .stat-card h3 {
+    font-size: 42px;
+  }
+
+  .stat-card p {
+    font-size: 14px;
+  }
+
+  .service-card {
+    padding: 30px;
+  }
+
+  .feature-item {
+    padding-left: 40px;
+  }
+
+  .feature-number {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    left: 15px;
+    top: 30px;
+  }
+
+  .cta-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .cta-content p {
+    font-size: 16px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .cta-buttons .btn {
+    width: 100%;
+  }
+}
