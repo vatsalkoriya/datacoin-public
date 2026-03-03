@@ -1,0 +1,128 @@
+/* Header.css - Blue & Green Theme */
+
+:root {
+  --primary-color: #0066cc;
+  --secondary-color: #00b366;
+  --dark-bg: #0d1b2a;
+}
+
+.header {
+  background: linear-gradient(135deg, #0d1b2a, #1a3a52);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 2px 12px rgba(0, 102, 204, 0.2);
+}
+
+.header-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  color: white;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #66d9ff, #00d98e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Nav Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: linear-gradient(135deg, #0066cc, #00b366);
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #66d9ff;
+}
+
+.nav-links a:hover:after {
+  width: 100%;
+}
+
+/* Logout Button */
+.btn-logout {
+  background-color: #ff4757;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+  background-color: #ff3838;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(255, 71, 87, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-nav {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #1a3a52;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    height: 3px;
+    width: 25px;
+    background: white;
+    margin: 5px;
+    border-radius: 2px;
+    display: block;
+  }
+}
