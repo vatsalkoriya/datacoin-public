@@ -31,7 +31,6 @@ const allowedOrigins = [
   'http://127.0.0.1:3000',
   'http://localhost:5173',
   'http://127.0.0.1:5173',
-  'https://datacoinsoftwarepvtltd.onrender.com'
 ];
 
 app.use(cors({
@@ -84,6 +83,4 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server started successfully on port ${PORT}`);
-});
+module.exports = app;
