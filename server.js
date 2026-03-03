@@ -18,49 +18,44 @@ connectDB();
 
 const app = express();
 
+// Middleware for CORS (Cross-Origin Resource Sharing)
+// Allow common development origins and Vercel deployments
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'https://datacoinsoftwarepvtltd.onrender.com'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Check if origin is allowed
+    const isAllowed = !origin ||
+      allowedOrigins.indexOf(origin) !== -1 ||
+      origin.includes('localhost') ||
+      origin.includes('127.0.0.1') ||
+      origin.endsWith('.vercel.app');
+
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      console.log('Blocked by CORS:', origin);
+      callback(new Error('CORS policy: origin not allowed'));
+    }
+  },
+  credentials: true
+}));
+
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
 // Security and Performance Middleware
-app.use(helmet());
-app.use(compression());
-
-// Middleware for CORS (Cross-Origin Resource Sharing)
-// allow requests from whichever frontend is hosting the UI
-// CLIENT_URL may contain a single origin or a comma-separated list
-// e.g. "http://localhost:3000,https://tubular-begonia-3a766f.netlify.app"
-const clientUrls = (process.env.CLIENT_URL || '')
-  .split(',')
-  .map((u) => u.trim())
-  .filter(Boolean);
-
-const allowedOrigins = [
-  ...clientUrls,
-  'https://datacoinsoftwarepvtltd.onrender.com', // backend itself (not really needed)
-];
-
-app.use(cors({
-  origin: (origin, callback) => {
-    // Fix: Normalize origin by removing trailing slash if present
-    const normalizedOrigin = origin ? origin.replace(/\/$/, '') : origin;
-
-    // Check if origin is localhost or 127.0.0.1 (any port) or a Vercel deployment
-    const isLocal = normalizedOrigin && (
-      normalizedOrigin.includes('localhost') ||
-      normalizedOrigin.includes('127.0.0.1') ||
-      normalizedOrigin.endsWith('.vercel.app')
-    );
-
-    // allow non-browser requests (e.g. Postman) when origin is undefined
-    if (!normalizedOrigin || isLocal || allowedOrigins.includes(normalizedOrigin)) {
-      return callback(null, true);
-    }
-    console.error(`CORS blocked for origin: ${origin}`);
-    callback(new Error('CORS policy: origin not allowed'));
-  },
-  credentials: true,
+app.use(helmet({
+  crossOriginResourcePolicy: false, // Allow cross-origin requests
 }));
+app.use(compression());
 
 // Middleware to parse JSON and urlencoded data
 app.use(express.json());
