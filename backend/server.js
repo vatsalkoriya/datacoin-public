@@ -17,11 +17,17 @@ const app = express();
 
 // Middleware for CORS (Cross-Origin Resource Sharing)
 // allow requests from whichever frontend is hosting the UI
-// you can supply CLIENT_URL in .env; we also whitelist the new render URL
+// CLIENT_URL may contain a single origin or a comma-separated list
+// e.g. "http://localhost:3000,https://tubular-begonia-3a766f.netlify.app"
+const clientUrls = (process.env.CLIENT_URL || '')
+  .split(',')
+  .map((u) => u.trim())
+  .filter(Boolean);
+
 const allowedOrigins = [
-  process.env.CLIENT_URL,
-  'https://datacoinsoftwarepvtltd.onrender.com',
-].filter(Boolean); // remove undefined values
+  ...clientUrls,
+  'https://datacoinsoftwarepvtltd.onrender.com', // backend itself (not really needed)
+];
 
 app.use(cors({
     origin: (origin, callback) => {
