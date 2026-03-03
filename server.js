@@ -1,12 +1,14 @@
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
+const compression = require("compression");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authroute");
 const userRoutes = require("./routes/userroute");
 const contactRoutes = require("./routes/contactroute");
-// Correctly import BOTH notFound and errorHandler
-const { notFound, errorHandler } = require("./middlewares/errorHandler"); // <-- 1. FIX THIS IMPORT
+const morgan = require("morgan");
+const { notFound, errorHandler } = require("./middlewares/errorHandler");
 
 // Load environment variables from .env file
 dotenv.config();
@@ -15,6 +17,14 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
+// Security and Performance Middleware
+app.use(helmet());
+app.use(compression());
 
 // Middleware for CORS (Cross-Origin Resource Sharing)
 // allow requests from whichever frontend is hosting the UI
