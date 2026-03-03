@@ -1,17 +1,13 @@
 import axios from "axios";
 
-// Get API URL from Vite environment
-const baseURL = import.meta.env.VITE_API_URL;
-
-// If API URL is missing in production, throw clear error
-if (!baseURL) {
-  throw new Error("VITE_API_URL is not defined in environment variables.");
-}
+// Get API URL from Vite environment, fallback to '/api' for Vercel/proxied environments
+const baseURL = import.meta.env.VITE_API_URL || '/api';
 
 const API = axios.create({
   baseURL,
-  withCredentials: true, // important if using cookies
+  withCredentials: true, // important if using cookies (doesn't hurt if not)
 });
+
 
 // Attach token automatically
 API.interceptors.request.use((req) => {

@@ -31,12 +31,17 @@ const allowedOrigins = [
   'http://127.0.0.1:3000',
   'http://localhost:5173',
   'http://127.0.0.1:5173',
-];
+  'https://datacoin-three.vercel.app',
+  process.env.CLIENT_URL,
+].filter(Boolean); // Filter out undefined values if CLIENT_URL is not set
 
 app.use(cors({
   origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+
     // Check if origin is allowed
-    const isAllowed = !origin ||
+    const isAllowed =
       allowedOrigins.indexOf(origin) !== -1 ||
       origin.includes('localhost') ||
       origin.includes('127.0.0.1') ||
@@ -45,12 +50,14 @@ app.use(cors({
     if (isAllowed) {
       callback(null, true);
     } else {
-      console.log('Blocked by CORS:', origin);
+      console.warn('⚠️ Blocked by CORS:', origin);
+      console.log('Whitelisted origins:', allowedOrigins);
       callback(new Error('CORS policy: origin not allowed'));
     }
   },
   credentials: true
 }));
+
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -82,5 +89,10 @@ app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🌍 Health check: http://localhost:${PORT}/`);
+});
 
 module.exports = app;
