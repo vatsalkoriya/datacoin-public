@@ -32,10 +32,20 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: (origin, callback) => {
+    // Fix: Normalize origin by removing trailing slash if present
+    const normalizedOrigin = origin ? origin.replace(/\/$/, '') : origin;
+
+    // Check if origin is localhost or 127.0.0.1 (any port)
+    const isLocal = normalizedOrigin && (
+      normalizedOrigin.startsWith('http://localhost') ||
+      normalizedOrigin.startsWith('http://127.0.0.1')
+    );
+
     // allow non-browser requests (e.g. Postman) when origin is undefined
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!normalizedOrigin || isLocal || allowedOrigins.includes(normalizedOrigin)) {
       return callback(null, true);
     }
+    console.error(`CORS blocked for origin: ${origin}`);
     callback(new Error('CORS policy: origin not allowed'));
   },
   credentials: true,
