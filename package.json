@@ -1,0 +1,8 @@
+{
+  "name": "datacoin-protoypr",
+  "private": true,
+  "scripts": {
+    "start": "cd backend && npm run dev",
+    "install": "cd backend && npm install"
+  }
+}

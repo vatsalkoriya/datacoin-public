@@ -73,7 +73,7 @@ The app will open at `http://localhost:3000`
 > For production deployments, set it to your hosted backend, e.g.:
 >
 > ```bash
-> REACT_APP_API_URL=https://datacoin-backend.onrender.com/api
+> REACT_APP_API_URL=https://datacoinsoftwarepvtltd.onrender.com/api
 > ```
 
 

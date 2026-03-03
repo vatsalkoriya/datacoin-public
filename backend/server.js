@@ -16,8 +16,21 @@ connectDB();
 const app = express();
 
 // Middleware for CORS (Cross-Origin Resource Sharing)
+// allow requests from whichever frontend is hosting the UI
+// you can supply CLIENT_URL in .env; we also whitelist the new render URL
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  'https://datacoinsoftwarepvtltd.onrender.com',
+].filter(Boolean); // remove undefined values
+
 app.use(cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173', 
+    origin: (origin, callback) => {
+        // allow non-browser requests (e.g. Postman) when origin is undefined
+        if (!origin || allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        callback(new Error('CORS policy: origin not allowed')); 
+    },
     credentials: true,
 }));
 
