@@ -9,6 +9,7 @@ import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
+import Profile from './auth-pages/Profile';
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </div>

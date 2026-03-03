@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const connectDB = require("./config/db"); 
-const authRoutes = require("./routes/authroute"); 
-const userRoutes = require("./routes/userroute"); 
+const connectDB = require("./config/db");
+const authRoutes = require("./routes/authroute");
+const userRoutes = require("./routes/userroute");
+const contactRoutes = require("./routes/contactroute");
 // Correctly import BOTH notFound and errorHandler
 const { notFound, errorHandler } = require("./middlewares/errorHandler"); // <-- 1. FIX THIS IMPORT
 
@@ -30,19 +31,19 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-    origin: (origin, callback) => {
-        // allow non-browser requests (e.g. Postman) when origin is undefined
-        if (!origin || allowedOrigins.includes(origin)) {
-            return callback(null, true);
-        }
-        callback(new Error('CORS policy: origin not allowed')); 
-    },
-    credentials: true,
+  origin: (origin, callback) => {
+    // allow non-browser requests (e.g. Postman) when origin is undefined
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    callback(new Error('CORS policy: origin not allowed'));
+  },
+  credentials: true,
 }));
 
 // Middleware to parse JSON and urlencoded data
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // --- API Routes ---
 app.get("/", (req, res) => {
@@ -52,14 +53,15 @@ app.get("/", (req, res) => {
 // Mount the authentication and user routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/contact", contactRoutes);
 
 // --- Error Handling Middleware ---
 // This must be placed AFTER your API routes
 app.use(notFound);
-app.use(errorHandler);   
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`Server started successfully on port ${PORT}`);
+  console.log(`Server started successfully on port ${PORT}`);
 });

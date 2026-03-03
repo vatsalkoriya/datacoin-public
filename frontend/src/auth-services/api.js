@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // The variable is accessed via the global `process.env` object
 const API = axios.create({
-  baseURL: process.env.REACT_APP_API_URL, 
+  baseURL: import.meta.env.VITE_API_URL, 
 });
 
 API.interceptors.request.use((req) => {

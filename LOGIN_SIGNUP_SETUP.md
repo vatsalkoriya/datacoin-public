@@ -15,7 +15,7 @@
 ### 3. **API Service Configured**
    - [api.js](frontend/src/services/api.js) now uses: `http://localhost:5000/api`
    - Includes JWT token interceptor for authenticated requests
-   - Environment variable: `REACT_APP_API_URL`
+   - Environment variable: `VITE_API_URL`
 
 ### 4. **Styling Added**
    - [Authform.css](frontend/src/components/Auth/Authform.css) with responsive design

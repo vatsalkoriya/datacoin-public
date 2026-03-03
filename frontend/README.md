@@ -68,12 +68,12 @@ The app will open at `http://localhost:3000`
 
 > **Backend URL**
 >
-> The frontend reads the API base address from the `REACT_APP_API_URL`
+> The frontend reads the API base address from the `VITE_API_URL` environment variable (rename the value in `.env`).
 > environment variable (defaults to `http://localhost:5000/api`).
 > For production deployments, set it to your hosted backend, e.g.:
 >
 > ```bash
-> REACT_APP_API_URL=https://datacoinsoftwarepvtltd.onrender.com/api
+> VITE_API_URL=https://datacoinsoftwarepvtltd.onrender.com/api
 > ```
 
 
