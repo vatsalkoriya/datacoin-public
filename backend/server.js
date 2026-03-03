@@ -4,7 +4,6 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db"); 
 const authRoutes = require("./routes/authroute"); 
 const userRoutes = require("./routes/userroute"); 
-const contactRoutes = require("./routes/contactroute");
 // Correctly import BOTH notFound and errorHandler
 const { notFound, errorHandler } = require("./middlewares/errorHandler"); // <-- 1. FIX THIS IMPORT
 
@@ -34,7 +33,6 @@ app.get("/", (req, res) => {
 // Mount the authentication and user routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
-app.use("/api/contacts", contactRoutes); // new endpoint for storing contact form submissions
 
 // --- Error Handling Middleware ---
 // This must be placed AFTER your API routes

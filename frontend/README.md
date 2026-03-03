@@ -66,6 +66,17 @@ npm start
 
 The app will open at `http://localhost:3000`
 
+> **Backend URL**
+>
+> The frontend reads the API base address from the `REACT_APP_API_URL`
+> environment variable (defaults to `http://localhost:5000/api`).
+> For production deployments, set it to your hosted backend, e.g.:
+>
+> ```bash
+> REACT_APP_API_URL=https://datacoin-backend.onrender.com/api
+> ```
+
+
 ## 📄 Pages Overview
 
 ### 1. **Home** (`/`)
